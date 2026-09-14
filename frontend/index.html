@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Language Tutor</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+
+            <div>
+                <h1>LinguaAI</h1>
+                <span>AI Language Tutor</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <button
+                class="nav-item active"
+                data-section="dashboard"
+            >
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="conversation"
+            >
+                <span>◉</span>
+                AI Conversation
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="pronunciation"
+            >
+                <span>◌</span>
+                Pronunciation
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="vocabulary"
+            >
+                <span>✦</span>
+                Vocabulary
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="lesson"
+            >
+                <span>▣</span>
+                Daily Lesson
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="history"
+            >
+                <span>◷</span>
+                Progress History
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="ai-status">
+                <span class="status-dot"></span>
+                <div>
+                    <strong>AI Tutor Online</strong>
+                    <small>Ready to practice</small>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+                <span class="eyebrow">AI LANGUAGE LEARNING</span>
+                <h2 id="page-title">Good morning! 👋</h2>
+            </div>
+
+            <div class="top-controls">
+
+                <select id="languageSelect">
+                    <option value="Spanish">Spanish</option>
+                    <option value="English">English</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Arabic">Arabic</option>
+                </select>
+
+                <select id="levelSelect">
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+
+                <div class="avatar">A</div>
+
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+
+        <section
+            id="dashboard"
+            class="page-section active-section"
+        >
+
+            <div class="hero-card">
+
+                <div class="hero-content">
+
+                    <span class="hero-label">
+                        YOUR DAILY PRACTICE
+                    </span>
+
+                    <h3>
+                        Learn a language.<br>
+                        Speak with confidence.
+                    </h3>
+
+                    <p>
+                        Practice naturally with your personal
+                        AI language tutor.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="showSection('conversation')"
+                    >
+                        Start Speaking
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+                <div class="hero-illustration">
+                    <div class="speech-circle">
+                        <span>🎧</span>
+                    </div>
+
+                    <div class="floating-word word-one">
+                        Hola!
+                    </div>
+
+                    <div class="floating-word word-two">
+                        Bonjour!
+                    </div>
+
+                    <div class="floating-word word-three">
+                        Hello!
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        🔥
+                    </div>
+
+                    <div>
+                        <span>Learning Streak</span>
+                        <strong id="streak">0 days</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon yellow">
+                        ⭐
+                    </div>
+
+                    <div>
+                        <span>Average Score</span>
+                        <strong id="averageScore">0%</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        📚
+                    </div>
+
+                    <div>
+                        <span>Words Learned</span>
+                        <strong id="wordCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon yellow">
+                        🎯
+                    </div>
+
+                    <div>
+                        <span>Lessons</span>
+                        <strong id="lessonCount">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="content-card">
+
+                    <div class="card-header">
+                        <div>
+                            <span class="small-label">
+                                QUICK PRACTICE
+                            </span>
+
+                            <h3>What would you like to practice?</h3>
+                        </div>
+                    </div>
+
+                    <div class="practice-grid">
+
+                        <button
+                            class="practice-card"
+                            onclick="showSection('conversation')"
+                        >
+                            <span>💬</span>
+                            <strong>Conversation</strong>
+                            <small>Practice speaking</small>
+                        </button>
+
+                        <button
+                            class="practice-card"
+                            onclick="showSection('pronunciation')"
+                        >
+                            <span>🎙️</span>
+                            <strong>Pronunciation</strong>
+                            <small>Improve your accent</small>
+                        </button>
+
+                        <button
+                            class="practice-card"
+                            onclick="showSection('vocabulary')"
+                        >
+                            <span>📖</span>
+                            <strong>Vocabulary</strong>
+                            <small>Learn new words</small>
+                        </button>
+
+                        <button
+                            class="practice-card"
+                            onclick="showSection('lesson')"
+                        >
+                            <span>🧠</span>
+                            <strong>Daily Lesson</strong>
+                            <small>Build your skills</small>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card progress-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="small-label">
+                                YOUR PROGRESS
+                            </span>
+
+                            <h3>Learning overview</h3>
+                        </div>
+
+                    </div>
+
+                    <div class="progress-ring">
+                        <div class="progress-inner">
+                            <strong id="progressNumber">0%</strong>
+                            <span>average</span>
+                        </div>
+                    </div>
+
+                    <p class="center-text">
+                        Keep practicing to improve your score.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONVERSATION -->
+
+        <section
+            id="conversation"
+            class="page-section"
+        >
+
+            <div class="section-heading">
+                <span class="small-label">VOICE PRACTICE</span>
+                <h2>Talk with your AI tutor</h2>
+                <p>
+                    Speak naturally and receive instant
+                    language feedback.
+                </p>
+            </div>
+
+
+            <div class="conversation-layout">
+
+                <div class="conversation-card">
+
+                    <div class="tutor-header">
+
+                        <div class="tutor-avatar">
+                            🤖
+                        </div>
+
+                        <div>
+                            <strong>LinguaAI Tutor</strong>
+                            <span>AI Language Coach</span>
+                        </div>
+
+                        <span class="online-badge">
+                            ● Online
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="chatMessages"
+                        class="chat-messages"
+                    >
+
+                        <div class="message ai-message">
+
+                            <div class="message-avatar">
+                                🤖
+                            </div>
+
+                            <div class="bubble">
+                                <span class="message-label">
+                                    AI TUTOR
+                                </span>
+
+                                <p>
+                                    Hello! I'm your AI language
+                                    tutor. Let's practice together.
+                                    Tell me something about your day!
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="voice-area">
+
+                        <div
+                            id="listeningStatus"
+                            class="listening-status"
+                        >
+                            Click the microphone and start speaking
+                        </div>
+
+                        <button
+                            id="micButton"
+                            class="mic-button"
+                        >
+                            🎙️
+                        </button>
+
+                        <div class="voice-hint">
+                            Tap to speak
+                        </div>
+
+                    </div>
+
+
+                    <div class="text-input-area">
+
+                        <input
+                            id="messageInput"
+                            type="text"
+                            placeholder="Or type your message here..."
+                        >
+
+                        <button
+                            id="sendButton"
+                            class="send-button"
+                        >
+                            Send
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="side-panel">
+
+                    <div class="content-card">
+
+                        <span class="small-label">
+                            SESSION
+                        </span>
+
+                        <h3>Conversation settings</h3>
+
+                        <label>Topic</label>
+
+                        <select id="topicSelect">
+                            <option>General conversation</option>
+                            <option>Travel</option>
+                            <option>Food</option>
+                            <option>Work</option>
+                            <option>Shopping</option>
+                            <option>Daily life</option>
+                        </select>
+
+                        <div class="tip-box">
+                            <strong>💡 Tutor tip</strong>
+                            <p>
+                                Don't worry about mistakes.
+                                Speaking regularly is the fastest
+                                way to improve.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRONUNCIATION -->
+
+        <section
+            id="pronunciation"
+            class="page-section"
+        >
+
+            <div class="section-heading">
+                <span class="small-label">PRONUNCIATION LAB</span>
+                <h2>Perfect your pronunciation</h2>
+                <p>
+                    Read the phrase, speak it aloud, and let the
+                    AI evaluate your performance.
+                </p>
+            </div>
+
+
+            <div class="pronunciation-card">
+
+                <span class="small-label">
+                    PRACTICE PHRASE
+                </span>
+
+                <div
+                    id="targetPhrase"
+                    class="target-phrase"
+                >
+                    The quick brown fox jumps over the lazy dog.
+                </div>
+
+                <button
+                    id="speakTargetButton"
+                    class="secondary-btn"
+                >
+                    🔊 Hear phrase
+                </button>
+
+
+                <div class="pronunciation-divider"></div>
+
+
+                <div
+                    id="pronunciationStatus"
+                    class="pronunciation-status"
+                >
+                    Press the microphone and repeat the phrase.
+                </div>
+
+                <button
+                    id="pronunciationMic"
+                    class="big-mic"
+                >
+                    🎙️
+                </button>
+
+                <p
+                    id="spokenResult"
+                    class="spoken-result"
+                >
+                </p>
+<div 
+    id="pronunciationScoreBox" 
+    class="pronunciation-score-box"
+>
+    <strong id="pronunciationScore">0%</strong>
+</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VOCABULARY -->
+
+        <section
+            id="vocabulary"
+            class="page-section"
+        >
+
+            <div class="section-heading">
+                <span class="small-label">VOCABULARY BUILDER</span>
+                <h2>Build your vocabulary</h2>
+                <p>
+                    Ask the AI tutor to explain any word.
+                </p>
+            </div>
+
+
+            <div class="content-card vocabulary-search">
+
+                <input
+                    id="vocabularyInput"
+                    type="text"
+                    placeholder="Enter a word..."
+                >
+
+                <button
+                    id="vocabularyButton"
+                    class="primary-btn"
+                >
+                    Explain with AI
+                </button>
+
+            </div>
+
+
+            <div
+                id="vocabularyResult"
+                class="content-card vocabulary-result hidden"
+            >
+
+                <span class="small-label">AI EXPLANATION</span>
+
+                <h2 id="vocabWord"></h2>
+
+                <p id="vocabMeaning"></p>
+
+                <div class="example-box">
+
+                    <strong>Example</strong>
+
+                    <p id="vocabExample"></p>
+
+                </div>
+
+                <div class="tip-box">
+
+                    <strong>💡 Memory tip</strong>
+
+                    <p id="vocabTip"></p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DAILY LESSON -->
+
+        <section
+            id="lesson"
+            class="page-section"
+        >
+
+            <div class="section-heading">
+
+                <span class="small-label">
+                    AI-GENERATED LESSON
+                </span>
+
+                <h2>Your daily lesson</h2>
+
+                <p>
+                    Get a personalized lesson generated by your AI tutor.
+                </p>
+
+            </div>
+
+
+            <button
+                id="generateLessonButton"
+                class="primary-btn lesson-button"
+            >
+                ✨ Generate Today's Lesson
+            </button>
+
+
+            <div
+                id="lessonLoading"
+                class="loading hidden"
+            >
+                Creating your personalized lesson...
+            </div>
+
+
+            <div
+                id="lessonContent"
+                class="lesson-content hidden"
+            >
+
+                <div class="content-card lesson-header">
+
+                    <span class="small-label">
+                        TODAY'S FOCUS
+                    </span>
+
+                    <h2 id="lessonTitle"></h2>
+
+                    <p id="lessonDescription"></p>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <span class="small-label">
+                        VOCABULARY
+                    </span>
+
+                    <div
+                        id="lessonVocabulary"
+                        class="lesson-vocabulary"
+                    ></div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <span class="small-label">
+                        GRAMMAR
+                    </span>
+
+                    <h3 id="grammarTopic"></h3>
+
+                    <p id="grammarExplanation"></p>
+
+                    <div class="example-box">
+                        <strong>Example</strong>
+                        <p id="grammarExample"></p>
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <span class="small-label">
+                        SPEAKING PRACTICE
+                    </span>
+
+                    <h3>Answer this question</h3>
+
+                    <p
+                        id="speakingPrompt"
+                        class="large-prompt"
+                    ></p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="showSection('conversation')"
+                    >
+                        Practice Speaking →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTORY -->
+
+        <section
+            id="history"
+            class="page-section"
+        >
+
+            <div class="section-heading">
+
+                <span class="small-label">
+                    LEARNING HISTORY
+                </span>
+
+                <h2>Your progress</h2>
+
+                <p>
+                    Track your learning journey.
+                </p>
+
+            </div>
+
+
+            <div class="history-stats stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">📚</div>
+                    <div>
+                        <span>Total Lessons</span>
+                        <strong id="historyLessons">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon yellow">⭐</div>
+                    <div>
+                        <span>Average Score</span>
+                        <strong id="historyScore">0%</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">🔥</div>
+                    <div>
+                        <span>Current Streak</span>
+                        <strong id="historyStreak">0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <div class="card-header">
+                    <div>
+                        <span class="small-label">
+                            RECENT ACTIVITY
+                        </span>
+                        <h3>Lesson history</h3>
+                    </div>
+                </div>
+
+                <div
+                    id="historyList"
+                    class="history-list"
+                >
+                    <p class="empty-state">
+                        No lessons completed yet.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+<script src="/app.js"></script>
+
+</body>
+</html>
